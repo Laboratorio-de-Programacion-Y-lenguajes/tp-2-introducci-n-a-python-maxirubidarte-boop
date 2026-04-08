@@ -4,37 +4,36 @@
 
 
 def es_palindromo(texto: str) -> bool:
-    """
-    Retorna True si el texto es palíndromo (ignorando espacios y mayúsculas).
-    Ejemplo: es_palindromo("Anita lava la tina") -> True
-    """
-    # TU CÓDIGO AQUÍ
-    pass
+    # 1. Limpiamos el texto: quitamos espacios y pasamos a minúsculas
+    texto_limpio = texto.replace(" ", "").lower()
+    # 2. Comparamos el texto con su versión invertida [::-1]
+    return texto_limpio == texto_limpio[::-1]
 
 
 def capitalizar_palabras(texto: str) -> str:
-    """
-    Capitaliza la primera letra de cada palabra.
-    Ejemplo: capitalizar_palabras("hola mundo") -> "Hola Mundo"
-    """
-    # TU CÓDIGO AQUÍ
-    pass
+    # El método .title() de Python pone en mayúscula la primera letra de cada palabra
+    return texto.title()
 
 
 def contar_vocales(texto: str) -> int:
-    """
-    Retorna la cantidad de vocales (a,e,i,o,u) en el texto,
-    sin distinguir mayúsculas/minúsculas.
-    """
-    # TU CÓDIGO AQUÍ
-    pass
+    vocales = "aeiou"
+    # Convertimos a minúsculas y sumamos 1 por cada caracter que esté en 'vocales'
+    return sum(1 for letra in texto.lower() if letra in vocales)
 
 
 def caesar_cipher(texto: str, desplazamiento: int) -> str:
-    """
-    Aplica el cifrado César al texto con el desplazamiento dado.
-    Solo desplaza letras (a-z, A-Z), los demás caracteres no cambian.
-    Ejemplo: caesar_cipher("abc", 1) -> "bcd"
-    """
-    # TU CÓDIGO AQUÍ
-    pass
+    resultado = ""
+    for char in texto:
+        # Verificamos si es una letra
+        if char.isalpha():
+            # Determinamos si empezamos desde 'A' o 'a' según sea mayúscula o minúscula
+            inicio = ord('A') if char.isupper() else ord('a')
+            # 1. Obtenemos la posición de la letra (0-25)
+            # 2. Aplicamos el desplazamiento y usamos módulo 26 para "dar la vuelta" al abecedario
+            # 3. Convertimos de nuevo a caracter
+            nuevo_char = chr((ord(char) - inicio + desplazamiento) % 26 + inicio)
+            resultado += nuevo_char
+        else:
+            # Si no es letra (espacios, números, puntos), queda igual
+            resultado += char
+    return resultado

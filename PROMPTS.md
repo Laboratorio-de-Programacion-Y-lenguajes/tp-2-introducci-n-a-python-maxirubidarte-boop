@@ -384,15 +384,59 @@ no modifique nada
 
 ### 7 - operaciones.py
 
-**Herramienta**: 
+**Herramienta**: Gemini
 
 **Prompt usado**:
+La primera funcion recibe un texto y tiene que averiguar si es palindromo, retorna un boolean segun sea o no palidromo. Ejemplo: es_palindromo("Anita lava la tina") -> True.
+
+La siguiente funcion es sobre capitalizar palabras donde recibe un string texto y capitaliza la primera letra de cada palabra y lo retorna. Ejemplo: capitalizar_palabras("hola mundo") -> "Hola Mundo".
+
+La siguiente funcion recibe un string texto y retorna la cantidad de vocales a,e,i,o,u en el texto sin distinguir mayusculas/minusculas. Retorna un int.
+
+La ultima funcion se llama caesar_cipher donde recibe un string texto, y un entero que representa el desplazamiento. Solo desplaza letras (a-z, A-Z), los demás caracteres no cambian. Ejemplo: caesar_cipher("abc", 1) -> "bcd".
+
+ Quiero que me dejes comentado el codigo para ayudarme a entender con esos comentarios generales como funciona.
 > 
 
 **Resultado obtenido**:
+def es_palindromo(texto: str) -> bool:
+    # 1. Limpiamos el texto: quitamos espacios y pasamos a minúsculas
+    texto_limpio = texto.replace(" ", "").lower()
+    # 2. Comparamos el texto con su versión invertida [::-1]
+    return texto_limpio == texto_limpio[::-1]
+
+
+def capitalizar_palabras(texto: str) -> str:
+    # El método .title() de Python pone en mayúscula la primera letra de cada palabra
+    return texto.title()
+
+
+def contar_vocales(texto: str) -> int:
+    vocales = "aeiou"
+    # Convertimos a minúsculas y sumamos 1 por cada caracter que esté en 'vocales'
+    return sum(1 for letra in texto.lower() if letra in vocales)
+
+
+def caesar_cipher(texto: str, desplazamiento: int) -> str:
+    resultado = ""
+    for char in texto:
+        # Verificamos si es una letra
+        if char.isalpha():
+            # Determinamos si empezamos desde 'A' o 'a' según sea mayúscula o minúscula
+            inicio = ord('A') if char.isupper() else ord('a')
+            # 1. Obtenemos la posición de la letra (0-25)
+            # 2. Aplicamos el desplazamiento y usamos módulo 26 para "dar la vuelta" al abecedario
+            # 3. Convertimos de nuevo a caracter
+            nuevo_char = chr((ord(char) - inicio + desplazamiento) % 26 + inicio)
+            resultado += nuevo_char
+        else:
+            # Si no es letra (espacios, números, puntos), queda igual
+            resultado += char
+    return resultado
 
 
 **¿Lo usaste tal cual o lo modificaste?**
+no modifique nada
 
 
 ---
@@ -402,5 +446,8 @@ no modifique nada
 Respondé brevemente (3-5 oraciones):
 
 - ¿Qué aprendiste sobre cómo formular buenos prompts?
+entendi que hay que ser bien especifico con lo que buscas que te responda, dar buenos detalles, proporcionar ejemplos, mientras mas descriptivo es el prompt mejor para que no se desvie mucho la ia, tengo que mejorar y usarlo mejor, pidiendole mas explicaciones y ejercicios.
 - ¿En qué casos la IA fue útil y en cuáles no?
+fue util en todos los casos por que cumplio con el codigo y los comentarios, capas tiene algun detalle pero es util.
 - ¿Qué harías diferente la próxima vez?
+me tomaria mucho mas tiempo para abarcar mejor el contenido de los ejercicios, para no ir tan apurado resolviendo.

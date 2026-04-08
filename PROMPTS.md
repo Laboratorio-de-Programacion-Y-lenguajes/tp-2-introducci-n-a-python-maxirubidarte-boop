@@ -151,15 +151,43 @@ no cambie nada pero si me di cuenta que no pense en especificarle que queria que
 
 ### 3 - listas.py
 
-**Herramienta**: 
+**Herramienta**:Gemini 
 
 **Prompt usado**:
+# me vas a ayudar a crear el codigo de las funciones que te voy a describir a continuacion buscando un codigo eficiente y coherente,
+# la primera funcion recibe una lista de numeros enteros y su objetivo es retornar la suma de estos, retornando un float,
+# la siguiente funcion recibe una lista de numeros y tiene que retornar una lista que tiene solo los numeros pares,
+# la siguiente funcion recibe una lista y tiene que invertir la lista y retornarla,
+# la siguiente funcion recibe una lista donde tiene que filtrar los elementos que estan duplicados y retornar una lista que no contiene duplicados, cabe destacar que el orden de la primera  # # # lista tiene que mantenerse en la segunda,
+# la siguiente funcion recibe una lista con listas, y su objetivo es retornar una lista que contenga la mezcla de las listas manteniendo el orden.
 > 
 
 **Resultado obtenido**:
+def suma_lista(numeros: list) -> float:
+    """Retorna la suma de los elementos como float."""
+    return float(sum(numeros))
+
+def filtrar_pares(numeros: list) -> list:
+    """Retorna una lista solo con los números pares."""
+    return [n for n in numeros if n % 2 == 0]
+
+def invertir_lista(lista: list) -> list:
+    """Retorna la lista invertida sin modificar la original."""
+    return lista[::-1]
+
+def eliminar_duplicados(lista: list) -> list:
+    """Retorna una lista sin duplicados manteniendo el orden original."""
+    # dict.fromkeys es la forma más eficiente de eliminar duplicados preservando el orden
+    return list(dict.fromkeys(lista))
+
+def aplanar_lista(lista_de_listas: list) -> list:
+    """Retorna una única lista con todos los elementos en orden."""
+    # List comprehension anidada para máxima eficiencia
+    return [item for sublista in lista_de_listas for item in sublista]
 
 
 **¿Lo usaste tal cual o lo modificaste?**
+no modifique nada pero esta vez le aclare que queria un codigo eficiente
 
 
 ---

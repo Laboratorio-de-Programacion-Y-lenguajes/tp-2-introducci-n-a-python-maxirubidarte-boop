@@ -42,4 +42,4 @@ def aplanar_lista(lista: list) -> list:
     Ejemplo: aplanar_lista([[1,2],[3,4]]) -> [1, 2, 3, 4]
     """
     # TU CÓDIGO AQUÍ
-    return [item for sublista in lista_de_listas for item in sublista]
+    return [item for sublista in lista for item in sublista]

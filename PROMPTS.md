@@ -87,15 +87,64 @@ no modifique nada
 
 ### 2 - condicionales.py
 
-**Herramienta**: 
+**Herramienta**: Gemini
 
 **Prompt usado**:
+# la primera funcion recibe un numero entero por parametro y retorna si es "positivo", "negativo" o "cero" segun el valor recibido,
+# la siguiente funcion consiste en comparar tres numeros enteros que se reciben por parametro y retornar el mayor de los tres,
+# la siguiente funcion clasifica una nota que ingresa por parametro como float y retorna el mensaje correspondiente donde sobresaliente es >= 9, bueno es >= 7, aprobado es >= 6 y desaprobado es < 6, pero si la nota es menor a 0 o mayor a 10 imprime "Nota invalida" y retorna dicho mensaje,
+# la ultima funcion recibe un anio entero por parametro y retorna un boolean true si el anio es bisiesto, recordando que es bisiesto si es divisible por 4 excepto los divisibles por 100 salvo que tambien lo sean por 400
 > 
 
 **Resultado obtenido**:
+def clasificar_numero(n: int) -> str:
+    """
+    Retorna "positivo", "negativo" o "cero" según corresponda.
+    """
+    if n > 0:
+        return "positivo"
+    elif n < 0:
+        return "negativo"
+    else:
+        return "cero"
+
+
+def mayor_de_tres(a: int, b: int, c: int) -> int:
+    """
+    Retorna el mayor de tres números.
+    """
+    return max(a, b, c)
+
+
+def clasificar_nota(nota: float) -> str:
+    """
+    Retorna la categoría de la nota con validación de rango 0-10.
+    """
+    if nota < 0 or nota > 10:
+        print("Nota invalida")
+        return "Nota invalida"
+    
+    if nota >= 9:
+        return "Sobresaliente"
+    elif nota >= 7:
+        return "Bueno"
+    elif nota >= 6:
+        return "Aprobado"
+    else:
+        return "Desaprobado"
+
+
+def es_bisiesto(anio: int) -> bool:
+    """
+    Retorna True si el año es bisiesto.
+    """
+    # Un año es bisiesto si es divisible por 4, 
+    # excepto los divisibles por 100, salvo que también lo sean por 400.
+    return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
 
 
 **¿Lo usaste tal cual o lo modificaste?**
+no cambie nada pero si me di cuenta que no pense en especificarle que queria que el codigo sea lo mas eficiente posible para no usar tantos if else.
 
 
 ---
